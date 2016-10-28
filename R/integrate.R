@@ -550,15 +550,15 @@ construct.rosters.from.list <- function (roster.collection,  #raw list
         r1.match <- match(this.roster$numfirstlast,
                           roster.master$numfirstlast)
         roster.master$pC[r1.match[this.roster$pos=="C"]] <-
-            roster.master$pC[r1.match[this.roster$pos=="C"]] + 1
+            as.integer(roster.master$pC[r1.match[this.roster$pos=="C"]]) + 1
         roster.master$pL[r1.match[this.roster$pos=="L"]] <-
-            roster.master$pL[r1.match[this.roster$pos=="L"]] + 1
+            as.integer(roster.master$pL[r1.match[this.roster$pos=="L"]]) + 1
         roster.master$pR[r1.match[this.roster$pos=="R"]] <-
-            roster.master$pR[r1.match[this.roster$pos=="R"]] + 1
+            as.integer(roster.master$pR[r1.match[this.roster$pos=="R"]]) + 1
         roster.master$pD[r1.match[this.roster$pos=="D"]] <-
-            roster.master$pD[r1.match[this.roster$pos=="D"]] + 1
+            as.integer(roster.master$pD[r1.match[this.roster$pos=="D"]]) + 1
         roster.master$pG[r1.match[this.roster$pos=="G"]] <-
-            roster.master$pG[r1.match[this.roster$pos=="G"]] + 1
+            as.integer(roster.master$pG[r1.match[this.roster$pos=="G"]]) + 1
       
     }
 
