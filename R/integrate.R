@@ -544,21 +544,21 @@ construct.rosters.from.list <- function (roster.collection,  #raw list
             if (any(!is.na(m2))) newrecs$player.id[!is.na(m2)] <- roster.master$player.id[m2[!is.na(m2)]]
             if (any(is.na(m2))) newrecs$player.id[is.na(m2)] <- max(roster.master$player.id) + 1:sum(is.na(m2))
             
-            roster.master <- rbind(roster.master, newrecs)
+            roster.master <- bind_rows(roster.master, newrecs)
         }
         
         r1.match <- match(this.roster$numfirstlast,
                           roster.master$numfirstlast)
         roster.master$pC[r1.match[this.roster$pos=="C"]] <-
-            as.integer(roster.master$pC[r1.match[this.roster$pos=="C"]]) + 1
+            roster.master$pC[r1.match[this.roster$pos=="C"]] + 1
         roster.master$pL[r1.match[this.roster$pos=="L"]] <-
-            as.integer(roster.master$pL[r1.match[this.roster$pos=="L"]]) + 1
+            roster.master$pL[r1.match[this.roster$pos=="L"]] + 1
         roster.master$pR[r1.match[this.roster$pos=="R"]] <-
-            as.integer(roster.master$pR[r1.match[this.roster$pos=="R"]]) + 1
+            roster.master$pR[r1.match[this.roster$pos=="R"]] + 1
         roster.master$pD[r1.match[this.roster$pos=="D"]] <-
-            as.integer(roster.master$pD[r1.match[this.roster$pos=="D"]]) + 1
+            roster.master$pD[r1.match[this.roster$pos=="D"]] + 1
         roster.master$pG[r1.match[this.roster$pos=="G"]] <-
-            as.integer(roster.master$pG[r1.match[this.roster$pos=="G"]]) + 1
+            roster.master$pG[r1.match[this.roster$pos=="G"]] + 1
       
     }
 
@@ -792,7 +792,7 @@ compile.all.games <- function (rdata.folder="nhlr-data",
                 return(out)
             })
 
-            secondary.data <- rbind_all(new.pbp.2)    ## fold.frames(new.pbp.2)
+            secondary.data <- bind_rows(new.pbp.2)    ## fold.frames(new.pbp.2)
             secondary.data$adjusted.distance <- NA
             secondary.data$shot.feature <- rushes.rebounds (secondary.data)  ## new
             secondary.data$import.ies <- 0   #xycoords: 0, imputed, espn, sportsnet
